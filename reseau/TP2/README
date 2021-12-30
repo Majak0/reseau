@@ -1,0 +1,24 @@
+# -*- org -*-
+
+* Variantes
+** serveur1 / client1
+  - le serveur répond au client sur la même connexion
+
+** serveur2 / client2
+  - le serveur répond sur une deuxième connexion du client sur le port N-1
+
+** serveur2b / client2b
+  - le serveur répond sur une deuxième connexion du client sur le plus grand
+    port < N disponible
+  - le numéro du deuxième port est envoyé au client via la première connexion
+
+** serveur3 / client3
+  - le serveur ouvre une deuxième connexion vers le client pour répondre
+
+* Usage
+** Serveur : ./serveurX [options]
+** Client  : ./clientX [options] serveur fichier
+** Options communes
+  -h        affiche l'aide et quitte le programme
+  -d        active les informations de debug de la bibliothèque client_serveur
+  -p port   numéro de port du serveur (4021 par défaut)

@@ -1,0 +1,44 @@
+# -*- org -*-
+
+* Description
+  Le serveur reçoit un tableau d'entier et le retourne en ayant supprimé les
+  zéros.
+  Le client génère un tableau aléatoire, l'envoie au serveur puis affiche la
+  réponse obtenue.
+
+* Usage
+** Serveur : ./serveur [option] [port]
+  -h        affiche l'aide et quitte le programme
+  -d        active les informations de debug
+  -m N      taille maximum du tableau acceptée par le serveur;
+            utiliser -1 pour ne pas mettre de limite (-1 par défaut)
+  -n N      nombre maximum de valeurs à afficher pour un tableau;
+            utiliser -1 pour ne ne pas mettre de limite (20 par défaut)
+  port      port d'écoute (7777 par défaut)
+
+** Client  : ./client [option] taille zéros [serveur [port]]
+  -h        affiche l'aide et quitte le programme
+  -d        active les informations de debug
+  -n N      nombre maximum de valeurs à afficher pour un tableau;
+            utiliser -1 pour ne ne pas mettre de limite (20 par défaut)
+  taille    taille du tableau
+  zéros     nombre de zéros dans le tableau
+  serveur   adresse du serveur (127.0.0.1 par défaut)
+  port      port du serveur (7777 par défaut)
+
+* Sujet de TP
+  Le programme serveur donné ici est plus général que ce qui était demandé dans
+  le sujet de TP.
+
+  Pour limiter le nombre d'éléments à 16 (programmes serveur*1), il suffit
+  d'appeler le programme serveur avec les paramètres "-m 16".
+  
+  Pour les versions itératives (programmes serveuri*), il faut simplifier la
+  boucle d'attente des clients.  La remplacer par la boucle suivante :
+
+    int sock;
+    while ((sock = attendre_client_tcp(lsock, debug)) >= 0) {
+        gerer_client_tcp(sock, size_max, array_print_max);
+        msg("[%ld] Fermeture de la connexion", (long)getpid());
+        close(sock);
+    }
