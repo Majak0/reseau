@@ -11,4 +11,7 @@
 #include <sys/types.h>
 
 int main(int argc, char *argv[])
-{}
+{
+    /* int creer_client_udp(char *adresse, int port, struct sockaddr_in *pserveur,struct sockaddr_in *pclient, int debug); */
+    int creer_client_udp(argv[0],argv[1],)
+}
