@@ -1,5 +1,4 @@
 #include "utils.h"
-#include <errno.h>
 #include <libgen.h>
 #include <netdb.h>
 #include <stdio.h>
@@ -9,10 +8,10 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <sys/types.h>
 
 int main(int argc, char *argv[])
 {
-    int port = argv[0];
-    int debug = 0;
-    int creer_serveur_udp(port, debug);
+    /* int creer_client_udp(char *adresse, int port, struct sockaddr_in *pserveur,struct sockaddr_in *pclient, int debug); */
+    int creer_client_udp(argv[0],argv[1],)
 }
