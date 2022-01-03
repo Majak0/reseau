@@ -14,7 +14,8 @@ int main(int argc, char *argv[]) {
 
     int sockfd;
     char buffer[MAXLINE];
-    char *hello ;
+    char *hello;
+    hello="";
     long int adrIp;
     inet_pton(AF_INET, argv[1], (void *)&adrIp);
     unsigned short port = strtol(argv[2], NULL, 10);
@@ -30,7 +31,7 @@ int main(int argc, char *argv[]) {
         hello = "No text";
     }
 
-    struct sockaddr_in     servaddr;
+    struct sockaddr_in servaddr;
 
     // Creating socket file descriptor
     if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) {
@@ -45,17 +46,16 @@ int main(int argc, char *argv[]) {
     servaddr.sin_port = htons(port);
     servaddr.sin_addr.s_addr = adrIp;
 
-    int n, len;
+    int n,server_addr_len;
 
     if ( sendto(sockfd, (const char *)hello, strlen(hello),
            MSG_CONFIRM, (const struct sockaddr *) &servaddr,
            sizeof(servaddr)) ==-1)
     {perror("sendto"); return -1;}
 
-
     n = recvfrom(sockfd, (char *)buffer, MAXLINE,
                  MSG_WAITALL, (struct sockaddr *) &servaddr,
-                 &len);
+                 &server_addr_len);
     buffer[n] = '\0';
     printf("Server : %s\n", buffer);
 

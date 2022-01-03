@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
         hello = "No text";
     }
 
-    struct sockaddr_in     servaddr;
+    struct sockaddr_in servaddr;
 
     // Creating socket file descriptor
     if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) {
