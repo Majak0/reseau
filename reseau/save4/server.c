@@ -6,7 +6,7 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 
-#define MAXLINE 1024
+#define MAXLINE 2048
 
 // Driver code
 int main(int argc, char *argv[]) {
@@ -55,6 +55,5 @@ int main(int argc, char *argv[]) {
     sendto(sockfd, (const char *)msg, strlen(msg),
            MSG_CONFIRM, (const struct sockaddr *) &cliaddr,
            len);
-
     return 0;
 }
