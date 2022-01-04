@@ -6,9 +6,8 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 
-#define MAXLINE 2048
+#define MAXLINE 1024
 
-// Driver code
 int main(int argc, char *argv[]) {
     int sockfd;
     char buffer[MAXLINE];
