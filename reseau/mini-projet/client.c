@@ -54,7 +54,6 @@ int main(int argc, char *argv[]) {
                  MSG_WAITALL, (struct sockaddr *) &servaddr,
                  &server_addr_len);
     buffer[n] = '\0';
-    //printf("Server : %s\n", buffer);
 
     close(sockfd);
     return 0;
