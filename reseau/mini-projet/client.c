@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     msg = (char *) malloc(sizeof(char));
     long int adrIp;
     inet_pton(AF_INET, argv[1], (void *)&adrIp);
-    unsigned short port = strtol(argv[2], NULL, 10);    // converti le port passé en argument de type Strinng en un type short
+    unsigned short port = strtol(argv[2], NULL, 10);    // converti le port passé en argument de type String en un type short
     if (argc > 2) {
         for (int i = 3; i < argc; i++) {
             // ajout des arguments au message à envoyer au serveur
