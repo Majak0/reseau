@@ -15,13 +15,13 @@ int main(int argc, char *argv[]) {
     int sockfd;
     char buffer[MAXLINE];
     char *msg="";
-    msg = (char *) malloc(argc*sizeof(char));
+    msg = (char *) malloc(sizeof(char));
     long int adrIp;
     inet_pton(AF_INET, argv[1], (void *)&adrIp);
-    unsigned short port = strtol(argv[2], NULL, 10);
+    unsigned short port = strtol(argv[2], NULL, 10);    // converti le port passé en argument de type Strinng en un type short
     if (argc > 2) {
-        //printf(" ");
         for (int i = 3; i < argc; i++) {
+            // ajout des arguments au message à envoyer au serveur
             strcat(msg, argv[i]);
             strcat(msg, " ");
         }
@@ -45,17 +45,18 @@ int main(int argc, char *argv[]) {
     int n;
     socklen_t server_addr_len;
 
+    // envoie du message
     if ( sendto(sockfd, (const char *)msg, strlen(msg),
                 MSG_CONFIRM, (const struct sockaddr *) &servaddr,
                 sizeof(servaddr)) ==-1)
     {perror("sendto"); return -1;}
 
-
+    // reception de réponse du serveur
     n = recvfrom(sockfd, (char *)buffer, MAXLINE,
                  MSG_WAITALL, (struct sockaddr *) &servaddr,
                  &server_addr_len);
     buffer[n] = '\0';
-    printf("Server : %s\n", buffer);
+    //printf("Server : %s\n", buffer);
 
     close(sockfd);
     return 0;

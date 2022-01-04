@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
     int sockfd;
     char buffer[MAXLINE];
     int port = atoi(argv[1]);
-    char *msg = "serveur close";
+    char *msg = "";
     struct sockaddr_in servaddr, cliaddr;
 
     // Creating socket file descriptor
@@ -40,8 +40,7 @@ int main(int argc, char *argv[]) {
 
     int n;
     socklen_t len;
-
-    len = sizeof(cliaddr);  //len is value/resuslt
+    len = sizeof(cliaddr);  //len is value/result
 
     n = recvfrom(sockfd, (char *)buffer, MAXLINE,
                  MSG_WAITALL, ( struct sockaddr *) &cliaddr,
@@ -51,6 +50,7 @@ int main(int argc, char *argv[]) {
     client = inet_ntoa(cliaddr.sin_addr);
 
     buffer[n] = '\0';
+    // Affichage des informations du client + message avec 'Bonjour' ajouté au début puis envoie de la réponse du serveur
     printf("CLIENT : %s:%d \nBonjour %s\n",client, port, buffer);
     sendto(sockfd, (const char *)msg, strlen(msg),
            MSG_CONFIRM, (const struct sockaddr *) &cliaddr,
