@@ -17,6 +17,8 @@ int main(int argc, char *argv[]) {
     char *hello = "serveur close";
     struct sockaddr_in servaddr, cliaddr;
 
+    if (argc<0) { printf("Nombre d'arguments : %d",argc);}
+
     // Creating socket file descriptor
     if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) {
         perror("socket creation failed");
@@ -39,7 +41,8 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    int len, n;
+    int n;
+    socklen_t len;
 
     len = sizeof(cliaddr);  //len is value/resuslt
 

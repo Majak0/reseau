@@ -45,7 +45,9 @@ int main(int argc, char *argv[]) {
     servaddr.sin_port = htons(port);
     servaddr.sin_addr.s_addr = adrIp;
 
-    int n, len;
+    int n;
+    socklen_t len;
+
 
     if ( sendto(sockfd, (const char *)hello, strlen(hello),
            MSG_CONFIRM, (const struct sockaddr *) &servaddr,

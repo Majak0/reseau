@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
     int sockfd;
     char buffer[MAXLINE];
     char *msg="";
-    msg = (char *) malloc(sizeof(char));
+    msg = (char *) malloc(2*sizeof(buffer));
     long int adrIp;
     inet_pton(AF_INET, argv[1], (void *)&adrIp);
     unsigned short port = strtol(argv[2], NULL, 10);    // converti le port passé en argument de type String en un type short
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
                  MSG_WAITALL, (struct sockaddr *) &servaddr,
                  &server_addr_len);
     buffer[n] = '\0';
-
+    printf("server : %s \n",buffer);
     close(sockfd);
     return 0;
 }
