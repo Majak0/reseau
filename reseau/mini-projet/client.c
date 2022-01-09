@@ -1,3 +1,6 @@
+/*
+    Code réalisé par Maxime Jacquot lui même ce maxi BG suprême :)
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
